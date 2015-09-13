@@ -2,16 +2,19 @@ package com.alucar.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alucar.R;
 import com.alucar.car.Car;
 import com.alucar.util.HardcodedModels;
+import com.alucar.util.Util;
 
 import java.util.List;
 
 public class CarInfo extends AppCompatActivity{
 
+    private ImageView ivCar;
     private TextView tvModel,tvChassi,tvManufacturer,tvLicense,tvState,tvCity;
 
     @Override
@@ -42,6 +45,9 @@ public class CarInfo extends AppCompatActivity{
 
         tvCity = (TextView) findViewById(R.id.tv_info_city);
         tvCity.setText(actualCar.getCity());
+
+        ivCar = (ImageView) findViewById(R.id.iv_info_car);
+        ivCar.setImageResource(Util.getDrawable(this,actualCar.getImage()));
 
     }
 }

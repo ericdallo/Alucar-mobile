@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.alucar.R;
 import com.alucar.car.Car;
 import com.alucar.holder.CarViewHolder;
+import com.alucar.util.Util;
 
 import java.util.List;
 
@@ -39,16 +40,12 @@ public class ModelsAdapter extends RecyclerView.Adapter<CarViewHolder>{
         carViewHolder.getTvModel().setText(actualCar.getModel());
         carViewHolder.getTvManufacturer().setText(actualCar.getManufacturer());
         carViewHolder.getTvState().setText(actualCar.getState());
-        carViewHolder.getIvCar().setImageResource( getDrawable(context, actualCar.getImage()) );
+        carViewHolder.getIvCar().setImageResource( Util.getDrawable(context, actualCar.getImage()) );
     }
 
     @Override
     public int getItemCount() {
         return this.modelsList.size();
-    }
-
-    public static int getDrawable(Context context, String image){
-        return context.getResources().getIdentifier("drawable/" + image, null, context.getPackageName());
     }
 
 }
