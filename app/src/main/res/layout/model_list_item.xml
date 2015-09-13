@@ -23,40 +23,43 @@
             android:padding="12dp">
 
             <ImageView
-                android:id="@+id/car_item_image"
+                android:transitionName="@string/transition_name_image"
+                android:id="@+id/tv_car_item_image"
                 android:layout_width="120dp"
                 android:layout_height="100dp"
                 android:src="@drawable/no_car" />
 
             <TextView
-                android:id="@+id/car_item_model"
-                android:layout_width="match_parent"
+                android:transitionName="@string/transition_name_model"
+                android:id="@+id/tv_car_item_model"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/thumbnail"
-                android:gravity="center_horizontal"
+                android:layout_toRightOf="@+id/tv_car_item_image"
                 android:text="Carro Teste"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:typeface="sans" />
 
             <TextView
-                android:id="@+id/car_item_manufacturer"
-                android:layout_width="match_parent"
+                android:transitionName="@string/transition_name_manufacturer"
+                android:id="@+id/tv_car_item_manufacturer"
+                android:layout_width="wrap_content"
+                android:layout_toRightOf="@+id/tv_car_item_image"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/car_item_model"
+                android:layout_below="@+id/tv_car_item_model"
                 android:layout_marginTop="5dp"
-                android:gravity="center_horizontal"
                 android:text="Fabricante Teste"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:typeface="sans" />
 
             <TextView
-                android:id="@+id/car_item_state"
+                android:transitionName="@string/transition_name_state"
+                android:id="@+id/tv_car_item_state"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_alignTop="@+id/car_item_model"
+                android:layout_alignTop="@+id/tv_car_item_model"
                 android:layout_marginRight="5dp"
                 android:gravity="right"
                 android:text="STATE"

@@ -17,10 +17,10 @@ public class CarViewHolder extends RecyclerView.ViewHolder{
     public CarViewHolder(View itemView) {
         super(itemView);
         cardView = (CardView) itemView.findViewById(R.id.card_view_models);
-        tvModel = (TextView) itemView.findViewById(R.id.car_item_model);
-        tvManufacturer = (TextView) itemView.findViewById(R.id.car_item_manufacturer);
-        tvState = (TextView) itemView.findViewById(R.id.car_item_state);
-        ivCar = (ImageView) itemView.findViewById(R.id.car_item_image);
+        tvModel = (TextView) itemView.findViewById(R.id.tv_car_item_model);
+        tvManufacturer = (TextView) itemView.findViewById(R.id.tv_car_item_manufacturer);
+        tvState = (TextView) itemView.findViewById(R.id.tv_car_item_state);
+        ivCar = (ImageView) itemView.findViewById(R.id.tv_car_item_image);
     }
 
     public ImageView getIvCar() {
