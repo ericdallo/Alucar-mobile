@@ -1,36 +1,57 @@
 package com.alucar.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.alucar.R;
+import com.alucar.adapter.ModelsAdapter;
+import com.alucar.car.Car;
+import com.alucar.listener.RecyclerItemClickListener;
+import com.alucar.util.HardcodedModels;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CarModelsActivity extends AppCompatActivity{
 
-    private ListView listModels;
-    private List<String> models;
+    private RecyclerView recyclerView;
+    private List<Car> models;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_models);
+        String state = getIntent().getStringExtra("state");
 
-        setupHardcoded();
+        models = HardcodedModels.setup(state);
 
-        listModels = (ListView) findViewById(R.id.list_models);
-        listModels.setAdapter(new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,models));
+        ModelsAdapter modelsAdapter = new ModelsAdapter(this, models);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+
+        recyclerView = (RecyclerView) findViewById(R.id.rvModels);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
+
+        recyclerView.setAdapter(modelsAdapter);
+
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, (v, position) ->
+            showCarInfo(position)
+        ));
 
     }
 
-    private void setupHardcoded() {
-        models = new ArrayList<>();
-        models.add("Modelo 1");
-        models.add("Modelo 2");
-        models.add("Modelo Teste");
+    public void showCarInfo(int position) {
+        Intent intentCarInfo = new Intent(this,CarInfo.class);
+        intentCarInfo.putExtra("position",position);
+        startActivity(intentCarInfo);
     }
+
 }
