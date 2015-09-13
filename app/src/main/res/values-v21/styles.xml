@@ -2,9 +2,12 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowContentTransitions">true</item>
+
         <item name="colorPrimary">@color/ColorPrimary</item>
         <item name="colorPrimaryDark">@color/ColorPrimaryDark</item>
     </style>
+
 
     <style name="customToolbar" parent="Theme.AppCompat.NoActionBar">
         <!-- android:textColorPrimary is the  color of the title text

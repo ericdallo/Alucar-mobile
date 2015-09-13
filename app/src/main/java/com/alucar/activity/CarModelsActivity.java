@@ -2,13 +2,13 @@ package com.alucar.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 
 import com.alucar.R;
 import com.alucar.adapter.ModelsAdapter;
@@ -16,7 +16,6 @@ import com.alucar.car.Car;
 import com.alucar.listener.RecyclerItemClickListener;
 import com.alucar.util.HardcodedModels;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CarModelsActivity extends AppCompatActivity{
@@ -43,15 +42,20 @@ public class CarModelsActivity extends AppCompatActivity{
         recyclerView.setAdapter(modelsAdapter);
 
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, (v, position) ->
-            showCarInfo(position)
+            showCarInfo(v,position)
         ));
 
     }
 
-    public void showCarInfo(int position) {
+    public void showCarInfo(View v, int position) {
         Intent intentCarInfo = new Intent(this,CarInfo.class);
-        intentCarInfo.putExtra("position",position);
-        startActivity(intentCarInfo);
+        intentCarInfo.putExtra("position", position);
+
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,
+                new Pair<>(v.findViewById(R.id.tv_car_item_image),getString(R.string.transition_name_image))    
+
+        );
+        ActivityCompat.startActivity(this, intentCarInfo, options.toBundle());
     }
 
 }
