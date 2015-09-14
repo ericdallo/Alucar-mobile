@@ -47,7 +47,7 @@ public class CarInfo extends AppCompatActivity{
         tvCity.setText(actualCar.getCity());
 
         ivCar = (ImageView) findViewById(R.id.iv_info_car);
-        ivCar.setImageResource(Util.getDrawable(this,actualCar.getImage()));
+        ivCar.setImageResource(Util.getDrawableHD(this,actualCar.getImage()));
 
     }
 }

@@ -52,8 +52,8 @@ public class CarModelsActivity extends AppCompatActivity{
         intentCarInfo.putExtra("position", position);
 
         ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,
-                new Pair<>(v.findViewById(R.id.tv_car_item_image),getString(R.string.transition_name_image))    
-
+                new Pair<>(v.findViewById(R.id.tv_car_item_image),getString(R.string.transition_name_image)),
+                new Pair<>(findViewById(R.id.fab_car_item_back),getString(R.string.transition_name_floating))
         );
         ActivityCompat.startActivity(this, intentCarInfo, options.toBundle());
     }

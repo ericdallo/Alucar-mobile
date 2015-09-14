@@ -13,4 +13,5 @@
     <string name="transition_name_manufacturer">transition:MANUFACTURER</string>
     <string name="transition_name_state">transition:STATE</string>
     <string name="transition_name_image" >transition:IMAGE</string>
+    <string name="transition_name_floating">transition:FLOATING</string>
 </resources>
