@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,7 +34,7 @@ public class AlucarFragment extends Fragment{
                 showCarModels();
                 return;
             }
-            Toast.makeText(getContext(),R.string.choose_state,Toast.LENGTH_SHORT).show();
+            Snackbar.make(view,R.string.choose_state,Snackbar.LENGTH_SHORT).show();
         });
 
         return view;
