@@ -27,9 +27,8 @@ public class ModelsAdapter extends RecyclerView.Adapter<CarViewHolder>{
     public CarViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         LayoutInflater layoutInflater = LayoutInflater.from(viewGroup.getContext());
         View view = layoutInflater.inflate(R.layout.model_list_item, viewGroup, false);
-        CarViewHolder carViewHolder = new CarViewHolder(view);
 
-        return carViewHolder;
+        return new CarViewHolder(view);
 
     }
 

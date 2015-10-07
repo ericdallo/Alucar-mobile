@@ -12,7 +12,7 @@ import com.alucar.util.Util;
 
 import java.util.List;
 
-public class CarInfo extends AppCompatActivity{
+public class CarInfoActivity extends AppCompatActivity{
 
     private ImageView ivCar;
     private TextView tvModel,tvChassi,tvManufacturer,tvLicense,tvState,tvCity;
@@ -47,7 +47,7 @@ public class CarInfo extends AppCompatActivity{
         tvCity.setText(actualCar.getCity());
 
         ivCar = (ImageView) findViewById(R.id.iv_info_car);
-        ivCar.setImageResource(Util.getDrawableHD(this,actualCar.getImage()));
+        ivCar.setImageResource(Util.getDrawableHD(this, actualCar.getImage()));
 
     }
 }

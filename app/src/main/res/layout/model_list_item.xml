@@ -3,7 +3,8 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="8dp">
+    android:padding="8dp"
+    android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         card_view:cardUseCompatPadding="true"
@@ -77,19 +78,6 @@
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>
-
-    <android.support.design.widget.FloatingActionButton
-        android:transitionName="@string/transition_name_floating"
-        android:id="@+id/fab_car_item_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:translationZ="2dp"
-        android:backgroundTint="@color/ColorPrimary"
-        android:layout_gravity="bottom|end"
-        app:elevation="6dp"
-        app:pressedTranslationZ="12dp"
-        app:borderWidth="0dp"/>
 
 </LinearLayout>
 

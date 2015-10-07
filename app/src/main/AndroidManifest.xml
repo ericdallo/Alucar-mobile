@@ -20,7 +20,7 @@
         <activity android:name=".activity.CarModelsActivity"
             android:label="CarModels"/>
 
-        <activity android:name=".activity.CarInfo"
+        <activity android:name=".activity.CarInfoActivity"
             android:label="CarInfo"/>
     </application>
 

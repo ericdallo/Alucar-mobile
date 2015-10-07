@@ -26,6 +26,7 @@ public class CarModelsActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_car_models);
         String state = getIntent().getStringExtra("state");
 
@@ -41,21 +42,20 @@ public class CarModelsActivity extends AppCompatActivity{
 
         recyclerView.setAdapter(modelsAdapter);
 
-        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, (v, position) ->
-            showCarInfo(v,position)
-        ));
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, this::showCarInfo ));
 
     }
 
     public void showCarInfo(View v, int position) {
-        Intent intentCarInfo = new Intent(this,CarInfo.class);
+        Intent intentCarInfo = new Intent(this,CarInfoActivity.class);
         intentCarInfo.putExtra("position", position);
 
         ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,
-                new Pair<>(v.findViewById(R.id.tv_car_item_image),getString(R.string.transition_name_image)),
-                new Pair<>(findViewById(R.id.fab_car_item_back),getString(R.string.transition_name_floating))
+                new Pair<>(v.findViewById(R.id.tv_car_item_image),getString(R.string.transition_name_image))
         );
         ActivityCompat.startActivity(this, intentCarInfo, options.toBundle());
+
+
     }
 
 }
