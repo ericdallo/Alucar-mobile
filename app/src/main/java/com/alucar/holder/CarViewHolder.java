@@ -3,15 +3,15 @@ package com.alucar.holder;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alucar.R;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 public class CarViewHolder extends RecyclerView.ViewHolder{
 
     private CardView cardView;
-    private ImageView ivCar;
+    private SimpleDraweeView ivCar;
     private TextView tvModel,tvManufacturer,tvState;
 
     public CarViewHolder(View itemView) {
@@ -20,14 +20,14 @@ public class CarViewHolder extends RecyclerView.ViewHolder{
         tvModel = (TextView) itemView.findViewById(R.id.tv_car_item_model);
         tvManufacturer = (TextView) itemView.findViewById(R.id.tv_car_item_manufacturer);
         tvState = (TextView) itemView.findViewById(R.id.tv_car_item_state);
-        ivCar = (ImageView) itemView.findViewById(R.id.tv_car_item_image);
+        ivCar = (SimpleDraweeView) itemView.findViewById(R.id.tv_car_item_image);
     }
 
-    public ImageView getIvCar() {
+    public SimpleDraweeView getIvCar() {
         return ivCar;
     }
 
-    public void setIvCar(ImageView ivCar) {
+    public void setIvCar(SimpleDraweeView ivCar) {
         this.ivCar = ivCar;
     }
 

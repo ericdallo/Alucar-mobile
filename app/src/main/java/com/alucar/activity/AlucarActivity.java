@@ -7,14 +7,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.alucar.R;
+import com.facebook.drawee.backends.pipeline.Fresco;
 
 public class AlucarActivity extends AppCompatActivity {
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fresco.initialize(this);
+
         setContentView(R.layout.activity_alucar);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
