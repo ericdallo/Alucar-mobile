@@ -13,12 +13,12 @@ import com.alucar.util.Util;
 
 import java.util.List;
 
-public class ModelsAdapter extends RecyclerView.Adapter<CarViewHolder>{
+public class CarsAdapter extends RecyclerView.Adapter<CarViewHolder>{
 
     private final List<Car> modelsList;
     private Context context;
 
-    public ModelsAdapter(Context context,List<Car> modelsList) {
+    public CarsAdapter(Context context, List<Car> modelsList) {
         this.context = context;
         this.modelsList = modelsList;
     }

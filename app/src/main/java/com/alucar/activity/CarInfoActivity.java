@@ -1,53 +1,57 @@
 package com.alucar.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.alucar.R;
+import com.alucar.adapter.CarsAdapter;
 import com.alucar.car.Car;
-import com.alucar.util.HardcodedModels;
-import com.alucar.util.Util;
+import com.alucar.listener.RecyclerItemClickListener;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class CarInfoActivity extends AppCompatActivity{
 
-    private ImageView ivCar;
-    private TextView tvModel,tvChassi,tvManufacturer,tvLicense,tvState,tvCity;
+    private RecyclerView recyclerView;
+    private ArrayList<Car> cars;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_car_info);
 
-        List<Car> modelsList = HardcodedModels.getCars();
+        setContentView(R.layout.activity_car_models);
+        cars = getIntent().getParcelableArrayListExtra("carsList");
 
-        int position = getIntent().getIntExtra("position", -1);
+        CarsAdapter carsAdapter = new CarsAdapter(this, cars);
 
-        Car actualCar = modelsList.get(position);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
 
-        tvModel = (TextView) findViewById(R.id.tv_info_model);
-        tvModel.setText(actualCar.getModel());
+        recyclerView = (RecyclerView) findViewById(R.id.rvModels);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
 
-        tvChassi= (TextView) findViewById(R.id.tv_info_chassi);
-        tvChassi.setText(actualCar.getChassi());
+        recyclerView.setAdapter(carsAdapter);
 
-        tvManufacturer = (TextView) findViewById(R.id.tv_info_manufacturer);
-        tvManufacturer.setText(actualCar.getManufacturer());
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getApplicationContext(), this::showCarInfo));
+    }
 
-        tvLicense = (TextView) findViewById(R.id.tv_info_license);
-        tvLicense.setText(actualCar.getLicense());
+    private void showCarInfo(View view, int position) {
 
-        tvState = (TextView) findViewById(R.id.tv_info_state);
-        tvState.setText(actualCar.getState());
+        Intent intentCarDetails = new Intent(this,CarDetailsActivity.class);
 
-        tvCity = (TextView) findViewById(R.id.tv_info_city);
-        tvCity.setText(actualCar.getCity());
+        intentCarDetails.putParcelableArrayListExtra("carsList", cars);
+        intentCarDetails.putExtra("position", position);
 
-        ivCar = (ImageView) findViewById(R.id.iv_info_car);
-        ivCar.setImageResource(Util.getDrawableHD(this, actualCar.getImage()));
-
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,
+                new Pair<>(findViewById(R.id.tv_car_item_image), getString(R.string.transition_name_image))
+        );
+        ActivityCompat.startActivity(this, intentCarDetails, options.toBundle());
     }
 }

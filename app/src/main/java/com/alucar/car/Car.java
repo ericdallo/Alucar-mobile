@@ -1,25 +1,28 @@
 package com.alucar.car;
 
-public class Car {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Car implements Parcelable {
 
     private long id;
     private String manufacturer;
     private String model;
     private String chassi;
-    private String license;
+    private String licensePlate;
     private String state;
     private String city;
     private String image;
 
-    public Car(long id, String manufacturer, String model, String chassi, String license, String state, String city, String image) {
-        this.id = id;
-        this.manufacturer = manufacturer;
-        this.model = model;
-        this.chassi = chassi;
-        this.license = license;
-        this.state = state;
-        this.city = city;
-        this.image = image;
+    public Car(Parcel source){
+        id = source.readLong();
+        manufacturer = source.readString();
+        model = source.readString();
+        chassi = source.readString();
+        licensePlate = source.readString();
+        state = source.readString();
+        city = source.readString();
+        image = source.readString();
     }
 
     public long getId() {
@@ -54,12 +57,12 @@ public class Car {
         this.chassi = chassi;
     }
 
-    public String getLicense() {
-        return license;
+    public String getLicensePlate() {
+        return licensePlate;
     }
 
-    public void setLicense(String license) {
-        this.license = license;
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
     }
 
     public String getState() {
@@ -85,4 +88,34 @@ public class Car {
     public void setImage(String image) {
         this.image = image;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(id);
+        dest.writeString(manufacturer);
+        dest.writeString(model);
+        dest.writeString(chassi);
+        dest.writeString(licensePlate);
+        dest.writeString(state);
+        dest.writeString(city);
+        dest.writeString(image);
+    }
+
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator(){
+
+        @Override
+        public Object createFromParcel(Parcel source) {
+            return new Car(source);
+        }
+
+        @Override
+        public Car[] newArray(int size) {
+            return new Car[size];
+        }
+    };
 }

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.alucar" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/logo"
@@ -17,11 +19,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.CarModelsActivity"
+        <activity android:name=".activity.CarSpecsActivity"
             android:label="CarModels"/>
-
         <activity android:name=".activity.CarInfoActivity"
             android:label="CarInfo"/>
+
+        <activity android:name=".activity.CarDetailsActivity"
+            android:label="CarDetails"/>
     </application>
 
 </manifest>

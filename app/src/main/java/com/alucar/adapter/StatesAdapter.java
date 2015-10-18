@@ -24,7 +24,7 @@ public class StatesAdapter extends RecyclerView.Adapter<StatesViewHolder>{
 
     @Override
     public StatesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.state_list_item, parent, false);
 
         return new StatesViewHolder(view);

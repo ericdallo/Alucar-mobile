@@ -14,4 +14,7 @@
     <string name="transition_name_state">transition:STATE</string>
     <string name="transition_name_image" >transition:IMAGE</string>
     <string name="transition_name_floating">transition:FLOATING</string>
+
+    <string name="error_label">Error</string>
+    <string name="unknow_host">Não foi possivel se conectar</string>
 </resources>
