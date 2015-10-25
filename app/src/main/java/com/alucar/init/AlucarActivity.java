@@ -8,8 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 
 import com.alucar.R;
 import com.github.clans.fab.FloatingActionButton;
@@ -17,10 +15,9 @@ import com.github.clans.fab.FloatingActionMenu;
 
 public class AlucarActivity extends AppCompatActivity {
 
-    private boolean menuActivated = true;
     private FloatingActionMenu menu;
     private FloatingActionButton btRent,btDevolve;
-    private Fragment statesFrag,welcomeFrag;
+    private Fragment statesFrag,devolutionFrag,welcomeFrag;
     private FragmentManager fm;
 
     @Override
@@ -30,25 +27,27 @@ public class AlucarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_alucar);
         fm = getSupportFragmentManager();
         statesFrag = fm.findFragmentById(R.id.states_frag);
+        devolutionFrag = fm.findFragmentById(R.id.devolution_frag);
         welcomeFrag = fm.findFragmentById(R.id.welcome_frag);
 
         menu = (FloatingActionMenu) findViewById(R.id.bt_menu);
 
         hideFrag(statesFrag);
+        hideFrag(devolutionFrag);
         showFrag(welcomeFrag);
 
         btRent = (FloatingActionButton) findViewById(R.id.bt_rent);
         btRent.setOnClickListener(v -> {
             menu.hideMenu(true);
-            showFrag(statesFrag);
             hideFrag(welcomeFrag);
+            showFrag(statesFrag);
         });
 
         btDevolve = (FloatingActionButton) findViewById(R.id.bt_devolve);
         btDevolve.setOnClickListener(v -> {
             menu.hideMenu(true);
-            //TODO
             hideFrag(welcomeFrag);
+            showFrag(devolutionFrag);
         });
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -101,6 +100,7 @@ public class AlucarActivity extends AppCompatActivity {
             return;
         }
         hideFrag(statesFrag);
+        hideFrag(devolutionFrag);
         showFrag(welcomeFrag);
 
         menu.showMenu(true);

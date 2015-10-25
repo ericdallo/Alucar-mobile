@@ -46,7 +46,7 @@ public class CarDetailsActivity extends AppCompatActivity{
         tvCity.setText(actualCar.getCity());
 
         tvKm = (TextView) findViewById(R.id.tv_details_km);
-        tvKm.setText(actualCar.getKm()+"");
+        tvKm.setText("R$ "+actualCar.getKm());
 
         ivCar = (ImageView) findViewById(R.id.iv_details_car);
 

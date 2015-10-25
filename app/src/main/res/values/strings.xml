@@ -19,4 +19,5 @@
     <string name="unknow_host">Não foi possivel se conectar</string>
     <string name="sub_welcome">Escolha abaixo se deseja alugar ou devolver um automóvel</string>
     <string name="welcome">Bem Vindo</string>
+    <string name="empty_search">Informe o nome do cliente</string>
 </resources>
