@@ -1,4 +1,4 @@
-package com.alucar.rest;
+package com.alucar.car;
 
 import com.alucar.car.Car;
 import com.google.gson.annotations.SerializedName;

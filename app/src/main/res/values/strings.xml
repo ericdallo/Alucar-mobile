@@ -7,7 +7,7 @@
     <string name="label_license">Placa</string>
     <string name="label_state">Estado</string>
     <string name="label_city">Cidade</string>
-    <string name="choose_state">Escolha um estado válido</string>
+    <string name="choose_state">Escolha um estado</string>
 
     <string name="transition_name_model">transition:MODEL</string>
     <string name="transition_name_manufacturer">transition:MANUFACTURER</string>
@@ -17,4 +17,6 @@
 
     <string name="error_label">Error</string>
     <string name="unknow_host">Não foi possivel se conectar</string>
+    <string name="sub_welcome">Escolha abaixo se deseja alugar ou devolver um automóvel</string>
+    <string name="welcome">Bem Vindo</string>
 </resources>

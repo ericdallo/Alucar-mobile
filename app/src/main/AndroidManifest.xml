@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".activity.AlucarActivity"
+            android:name=".init.AlucarActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,12 +19,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.CarSpecsActivity"
-            android:label="CarModels"/>
-        <activity android:name=".activity.CarInfoActivity"
+        <activity android:name=".car.CarListActivity"
             android:label="CarInfo"/>
 
-        <activity android:name=".activity.CarDetailsActivity"
+        <activity android:name=".car.CarDetailsActivity"
             android:label="CarDetails"/>
     </application>
 

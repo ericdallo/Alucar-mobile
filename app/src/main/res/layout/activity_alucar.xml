@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -14,9 +15,53 @@
         android:elevation="4dp"/>
 
     <fragment
-        android:layout_marginTop="60dp"
-        android:name="com.alucar.fragment.AlucarFragment"
-        android:id="@+id/main_frag"
+        android:layout_below="@+id/toolbar"
+        android:name="com.alucar.init.WelcomeFragment"
+        android:id="@+id/welcome_frag"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        tools:layout="@layout/welcome_fragment"
+        />
+    <fragment
+        android:layout_below="@+id/toolbar"
+        android:name="com.alucar.states.StatesFragment"
+        android:id="@+id/states_frag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout="@layout/states_fragment"
+        />
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/bt_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/fab_ic_add"
+        app:menu_colorNormal="@color/ColorPrimary"
+        app:menu_colorPressed="@color/ColorPrimary"
+        app:menu_colorRipple="#FFFFFF"
+        app:menu_showShadow="true">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/bt_devolve"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/fab_return"
+            app:fab_label="Devolver"
+            app:fab_colorNormal="@color/ColorPrimary"
+            app:fab_colorPressed="@color/ColorPrimary"
+            app:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/bt_rent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/fab_key"
+            app:fab_colorNormal="@color/ColorPrimary"
+            app:fab_colorPressed="@color/ColorPrimary"
+            app:fab_label="Alugar"
+            app:fab_size="mini" />
+    </com.github.clans.fab.FloatingActionMenu>
 </RelativeLayout>

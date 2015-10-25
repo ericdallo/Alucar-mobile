@@ -13,6 +13,7 @@ public class Car implements Parcelable {
     private String state;
     private String city;
     private String image;
+    private int km;
 
     public Car(Parcel source){
         id = source.readLong();
@@ -23,6 +24,7 @@ public class Car implements Parcelable {
         state = source.readString();
         city = source.readString();
         image = source.readString();
+        km = source.readInt();
     }
 
     public long getId() {
@@ -104,6 +106,7 @@ public class Car implements Parcelable {
         dest.writeString(state);
         dest.writeString(city);
         dest.writeString(image);
+        dest.writeInt(km);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator(){
@@ -118,4 +121,12 @@ public class Car implements Parcelable {
             return new Car[size];
         }
     };
+
+    public int getKm() {
+        return km;
+    }
+
+    public void setKm(int km) {
+        this.km = km;
+    }
 }

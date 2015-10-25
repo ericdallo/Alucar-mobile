@@ -24,14 +24,15 @@
             android:layout_height="wrap_content"
             android:padding="12dp">
 
-            <com.facebook.drawee.view.SimpleDraweeView
+            <ImageView
+                android:background="@android:color/transparent"
                 android:id="@+id/tv_car_item_image"
                 android:layout_width="120dp"
                 android:layout_height="100dp"
                 android:transitionName="@string/transition_name_image"
                 fresco:placeholderImage="@drawable/no_car"
-                fresco:placeholderImageScaleType="center"
-                fresco:actualImageScaleType="center"/>
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"/>
 
             <TextView
                 android:id="@+id/tv_car_item_model"

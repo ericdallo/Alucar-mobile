@@ -1,5 +1,6 @@
-package com.alucar.fragment;
+package com.alucar.states;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -13,27 +14,29 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.alucar.R;
-import com.alucar.activity.CarSpecsActivity;
-import com.alucar.adapter.StatesAdapter;
-import com.alucar.car.CarSpecification;
+import com.alucar.car.CarListActivity;
 import com.alucar.listener.RecyclerItemClickListener;
-import com.alucar.rest.CarSpecificationRest;
+import com.alucar.car.CarRest;
 import com.alucar.rest.RestResponse;
-import com.alucar.states.StatesBr;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AlucarFragment extends Fragment implements RestResponse {
+import dmax.dialog.SpotsDialog;
+
+public class StatesFragment extends Fragment implements RestResponse {
 
     private RecyclerView recyclerView;
     private List<StatesBr> states;
     private View view;
+    private AlertDialog dialog;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.search_frag, container);
+        dialog = new SpotsDialog(getContext());
+
+        view = inflater.inflate(R.layout.states_fragment, container);
         states = StatesBr.getAllStates();
 
         StatesAdapter statesAdapter= new StatesAdapter(view.getContext(), states);
@@ -46,25 +49,29 @@ public class AlucarFragment extends Fragment implements RestResponse {
 
         recyclerView.setAdapter(statesAdapter);
 
-        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(view.getContext(), this::findCarSpecificationByState));
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(view.getContext(), this::findCarByState));
         return view;
     }
 
-    private void findCarSpecificationByState(View view, int position) {
-        CarSpecificationRest rest = new CarSpecificationRest(this,states.get(position).toString());
+    private void findCarByState(View view, int position) {
+        dialog.show();
+        CarRest rest = new CarRest(this,states.get(position).toString());
         rest.execute();
     }
 
     @Override
-    public void processFinish(ArrayList<? extends Parcelable> carSpecificationList) {
-        Intent intentSpec = new Intent(getContext(),CarSpecsActivity.class);
+    public void processFinish(ArrayList<? extends Parcelable> carsList) {
+        dialog.dismiss();
+        Intent intentCars = new Intent(getContext(), CarListActivity.class);
 
-        intentSpec.putParcelableArrayListExtra("list", carSpecificationList);
-        startActivity(intentSpec);
+        intentCars.putParcelableArrayListExtra("carsList", carsList);
+
+        startActivity(intentCars);
     }
 
     @Override
     public void showErrorMsg() {
+        dialog.dismiss();
         Snackbar.make(view, R.string.unknow_host, Snackbar.LENGTH_SHORT).show();
     }
 }

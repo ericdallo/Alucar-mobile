@@ -1,10 +1,11 @@
-package com.alucar.rest;
+package com.alucar.car;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.alucar.R;
-import com.alucar.car.CarSpecification;
+import com.alucar.rest.AlucarApi;
+import com.alucar.rest.RestResponse;
 import com.alucar.util.AlucarConfig;
 
 import retrofit.RestAdapter;
@@ -14,11 +15,11 @@ public class CarRest extends AsyncTask<Void,Void,CarJson>{
 
     private RestAdapter restAdapter;
     private RestResponse delegate;
-    private CarSpecification carSpecification;
+    private String state;
 
-    public CarRest(RestResponse delegate, CarSpecification carSpecification) {
+    public CarRest(RestResponse delegate, String state) {
         this.delegate = delegate;
-        this.carSpecification = carSpecification;
+        this.state = state;
     }
 
     @Override
@@ -32,9 +33,10 @@ public class CarRest extends AsyncTask<Void,Void,CarJson>{
     @Override
     protected CarJson doInBackground(Void... params) {
         AlucarApi api = restAdapter.create(AlucarApi.class);
+
         CarJson json = new CarJson();
         try{
-            json = api.getCar(carSpecification.getModel(), carSpecification.getManufacturer());
+            json = api.getCar(state);
         }catch (RetrofitError error){
             Log.i(String.valueOf(R.string.error_label), String.valueOf(R.string.unknow_host));
             delegate.showErrorMsg();
